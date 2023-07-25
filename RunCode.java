@@ -2,36 +2,37 @@ public class RunCode {
 
     public static void main(String[] args) {
 
-        LinkedList dlli = new LinkedList(1);
+        HashTableData htd = new HashTableData();
 
-        dlli.append(2);
-        dlli.append(3);
-        dlli.append(4);
-        dlli.append(5);
-        dlli.append(6);
-        dlli.append(7);
-        dlli.append(8);
+        htd.put("paint", 100);
+        htd.put("nails", 200);
+        htd.put("spray", 50);
+        htd.put("lamer", 100);
+        htd.put("wood", 100);
+        htd.put("bed", 200);
+        htd.put("matt", 50);
+        htd.put("gun", 100);
 
-        dlli.prepend(0);
+        System.out.println(htd.contains("water"));
+        System.out.println(htd.contains("wood"));
+        System.out.println(htd.contains("nails"));
+        System.out.println(htd.contains("lamer"));
 
+        htd.printHash();
 
-        System.out.println(dlli.removeFirst());
+        System.out.println(htd.remove("lamer"));
+        System.out.println(htd.remove("wood"));
+        System.out.println(htd.remove("spray"));
+        System.out.println(htd.remove("no-problem"));
 
-        System.out.println(dlli.removeLast());
+        System.out.println(htd.allKeys());
 
-        System.out.println(dlli.get(4).value);
+        System.out.println(htd.getSize());
 
-        dlli.insert(5, 15);
+        htd.printHash();
 
-        dlli.set(5, 25);
-
-        dlli.remove(3);
-
-        System.out.println("Length " + dlli.getLength());
-
-        dlli.reverse();
-
-        dlli.printLList();
+        System.out.println(htd.getValue("gun"));
+        System.out.println(htd.getValue("gu"));
 
     }
 
