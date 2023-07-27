@@ -1,38 +1,27 @@
+import java.util.Collections;
+
 public class RunCode {
 
     public static void main(String[] args) {
 
-        HashTableData htd = new HashTableData();
+        GraphData gd = new GraphData();
 
-        htd.put("paint", 100);
-        htd.put("nails", 200);
-        htd.put("spray", 50);
-        htd.put("lamer", 100);
-        htd.put("wood", 100);
-        htd.put("bed", 200);
-        htd.put("matt", 50);
-        htd.put("gun", 100);
+        gd.addVerticesWihEdge("A","B");
+        gd.addVerticesWihEdge("B","A");
+        gd.addVerticesWihEdge("B","D");
+        gd.addVerticesWihEdge("C","D");
+        gd.addVerticesWihEdge("C","E");
+        gd.addVerticesWihEdge("D","C");
+        gd.addVerticesWihEdge("D","E");
+        gd.addVerticesWihEdge("E","D");
+        gd.addVerticesWihEdge("E","C");
 
-        System.out.println(htd.contains("water"));
-        System.out.println(htd.contains("wood"));
-        System.out.println(htd.contains("nails"));
-        System.out.println(htd.contains("lamer"));
+//        gd.printGraph();
 
-        htd.printHash();
+        System.out.println(gd.removeVertex("A"));
 
-        System.out.println(htd.remove("lamer"));
-        System.out.println(htd.remove("wood"));
-        System.out.println(htd.remove("spray"));
-        System.out.println(htd.remove("no-problem"));
+        gd.printGraph();
 
-        System.out.println(htd.allKeys());
-
-        System.out.println(htd.getSize());
-
-        htd.printHash();
-
-        System.out.println(htd.getValue("gun"));
-        System.out.println(htd.getValue("gu"));
 
     }
 
