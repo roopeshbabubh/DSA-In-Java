@@ -6,7 +6,6 @@ public class BinarySearchTree {
         int value;
         Node left;
         Node right;
-
         @Override
         public String toString() {
             return "Node {" +
@@ -19,10 +18,6 @@ public class BinarySearchTree {
         Node(int value) {
             this.value = value;
         }
-    }
-
-    BinarySearchTree() {
-
     }
 
     public void addData(int value) {
@@ -58,6 +53,39 @@ public class BinarySearchTree {
             }
         }
         return false;
+    }
+
+    public void deleteData(int value) {
+        deleteData(root, value);
+    }
+
+    private Node deleteData(Node currentNode, int value) {
+        if (currentNode == null) return null;
+        if (value < currentNode.value) {
+            currentNode.left = deleteData(currentNode.left, value);
+        } else if (value > currentNode.value) {
+            currentNode.right = deleteData(currentNode.right, value);
+        } else {
+            if (currentNode.left == null && currentNode.right == null) {
+                return null;
+            } else if (currentNode.left == null ) {
+                currentNode = currentNode.right;
+            } else if (currentNode.right == null) {
+                currentNode = currentNode.left;
+            } else {
+                int rightSubTreeMin = minValueInBST(currentNode.right);
+                currentNode.value = rightSubTreeMin;
+                currentNode.right = deleteData(currentNode.right, rightSubTreeMin);
+            }
+        }
+        return currentNode;
+    }
+
+    private int minValueInBST(Node currentNode) {
+        while (currentNode.left != null) {
+            currentNode = currentNode.left;
+        }
+        return currentNode.value;
     }
 
     @Override
